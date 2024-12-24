@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import multivariate_normal
 
-# Define constants
+# Define constants hyperparamters
 CLASS1_SIZE = 100
 CLASS2_SIZE = 100
 N_FEATURES = 2
@@ -13,9 +13,9 @@ EPOCHS = 100
 TEST_SIZE = 0.25
 
 # Define the means and covariances of the two components
-MEAN1 = np.array([0, -1])
+MEAN1 = np.array([1, 2])
 COV1 = np.array([[1, 0], [0, 1]])
-MEAN2 = np.array([-1, 2])
+MEAN2 = np.array([1, -2])
 COV2 = np.array([[1, 0], [0, 1]])
 
 # Generate random points from the two components
@@ -116,7 +116,7 @@ for i in range(X_test.shape[0]):
     x2_node.value = X_test[i][1].reshape(1, -1)
     forward_pass(graph)
 
-    if np.argmax(sigmoid.value) == np.argmax(y_test[i]):
+    if np.argmax(sigmoid.value) == y_test[i]:
         correct_predictions += 1
 
 accuracy = correct_predictions / X_test.shape[0]
