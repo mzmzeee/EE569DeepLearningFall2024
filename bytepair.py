@@ -155,22 +155,22 @@ class BytePairTokenizer:
         return self.bpe_codes
 # Example usage
 text = """
-The Prophet Muhammad (peace be upon him), the final prophet in Islam, was born in Mecca around 570 CE into the respected Quraysh tribe. His father, Abdullah, died before his birth, and his mother, Amina, passed away when he was six. He was then raised by his grandfather, Abd al-Muttalib, and after his death, by his uncle, Abu Talib.
-Known for his honesty and integrity, Muhammad earned the title "al-Amin" (the trustworthy one). At the age of 25, he married Khadija, a respected women, and they had several children.
-Around 610 CE, at the age of 40, while meditating in a cave on Mount Hira, Muhammad received his first revelation from God through the angel Gabriel. These revelations continued for the rest of his life and were memorized and written down by his followers, forming the Quran, the holy book of Islam.
-Muhammad began preaching his message of monotheism (the belief in one God, Allah) in Mecca, calling people to abandon idolatry and submit to God. His message was met with resistance and persecution from the Meccan elite, who feared the social and economic changes his teachings threatened.
-In 622 CE, facing increasing hostility, Muhammad and his followers migrated to Medina, an event known as the Hijra (migration). In Medina, he established a Muslim community and became a political and religious leader. The Muslim community grew, and conflicts arose with the Meccans.
-Over several years, battles were fought between the Muslims of Medina and the Meccans. Eventually, in 630 CE, Muhammad returned to Mecca with a large army, and the city surrendered peacefully. He forgave his former persecutors and cleansed the Kaaba, the central sanctuary in Mecca, of idols, dedicating it to the worship of one God.
-In the final years of his life, Muhammad consolidated Islam's position in Arabia, uniting most of the peninsula under the new faith. He established principles of governance, justice, and social welfare based on divine guidance.
-In 632 CE, Muhammad performed his Farewell Pilgrimage to Mecca, where he delivered his final sermon, emphasizing the importance of unity, equality, and adherence to the Quran and his teachings. Shortly after returning to Medina, he fell ill and passed away. He is buried in Medina, in the Prophet's Mosque, which remains a site of pilgrimage for Muslims worldwide.
-Muhammad's life and teachings have had a profound impact on the world, shaping the lives of billions of Muslims across centuries and continents. His example as a prophet, leader, and moral guide continues to inspire and influence people today."""
+The cat sleeps in the house 
+The big cat sees the small bird 
+The dog runs all day
+The dog eats food in the house 
+A bird flies in the sky
+The bird sleeps at night
+The sun shines on the trees
+The sun shines on the house
+"""
 print(split_text_into_words(text))
 
 # Example corpus
 corpus = split_text_into_words(text.lower())
 
 # Initialize the BPE tokenizer with a vocabulary size of 20
-tokenizer = BytePairTokenizer(vocab_size=500)
+tokenizer = BytePairTokenizer(vocab_size=36)
 
 # Train the tokenizer on the corpus
 tokenizer.fit(corpus)
@@ -186,7 +186,7 @@ for pair, index in tokenizer.get_bpe_codes().items():
     print(f"{pair}: {index}")
 
 # Tokenize words using the trained tokenizer
-word = "abumuhammad"
+word = "birds"
 tokens = tokenizer.encode(word)
 print(f"\nTokenized '{word}': {tokens}")
 
@@ -195,7 +195,7 @@ decoded_word = tokenizer.decode(tokens)
 print(f"Decoded tokens: {decoded_word}")
 
 # Tokenize another word
-word = "following"
+word = "dog"
 tokens = tokenizer.encode(word)
 print(f"\nTokenized '{word}': {tokens}")
 
