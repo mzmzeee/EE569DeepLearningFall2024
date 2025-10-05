@@ -76,8 +76,8 @@ graph = [x1_node,x2_node,w0_node,w1_node,w2_node,u1_node,u2_node,u12_node,u_node
 trainable = [w0_node,w1_node,w2_node]
 
 # Training loop
-epochs = 100
-learning_rate = 0.001
+epochs = EPOCHS
+learning_rate = LEARNING_RATE
 
 # Forward and Backward Pass
 def forward_pass(graph):
@@ -116,7 +116,7 @@ for i in range(X_test.shape[0]):
     x2_node.value = X_test[i][1].reshape(1, -1)
     forward_pass(graph)
 
-    if np.argmax(sigmoid.value) == y_test[i]:
+    if np.round(sigmoid.value) == y_test[i]:
         correct_predictions += 1
 
 accuracy = correct_predictions / X_test.shape[0]
